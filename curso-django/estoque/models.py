@@ -14,8 +14,8 @@ class Produto(models.Model):
     categoria = models.ForeignKey(
         'estoque.Categoria', 
         on_delete=models.CASCADE, 
-        null=True,  # Permite que o campo seja nulo
-        blank=True  # Permite que o campo seja deixado em branco em formulários
+        null=True,  
+        blank=True  
     )
     descricao = models.TextField(default="")
 
