@@ -1,0 +1,14 @@
+<form class="row g-3" method="post">
+    {% csrf_token %}
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="inputEmail4" name="nome">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Descrição</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="descricao">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Criar categoria</button>
+    </div>
+  </form>

@@ -1,0 +1,15 @@
+<form method="POST" class="row g-3">
+    {% csrf_token %}
+    <div class="col-md-6">
+      <label for="inputNome" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="inputNome" name="nome" value="{{ categoria.nome }}">
+    </div>
+    <div class="col-12">
+      <label for="inputDescricao" class="form-label">Descrição</label>
+      <input type="text" class="form-control" id="inputDescricao" name="descricao" value="{{ categoria.descricao }}">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+    </div>
+  </form>
+  

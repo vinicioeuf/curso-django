@@ -1,0 +1,32 @@
+<form class="row g-3" method="post">
+    {% csrf_token %}
+    <div class="col-md-6">
+      <label for="nome" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nome" name="nome">
+    </div>
+    <div class="col-md-6">
+        <label for="preco" class="form-label">Preço</label>
+        <input type="text" class="form-control" id="preco" name="preco">
+    </div>
+    <div class="col-md-6">
+        <label for="quantidade" class="form-label">Quantidade</label>
+        <input type="text" class="form-control" id="quantidade" name="quantidade">
+    </div>
+    <div class="col-12">
+      <label for="descricao" class="form-label">Descrição</label>
+      <input type="text" class="form-control" id="descricao" name="descricao">
+    </div>
+    <div class="col-12">
+      <label for="categoria" class="form-label">Categoria</label>
+      <select name="id_categoria" id="id_categoria" class="form-select">
+        <option value="" selected disabled>Escolher categoria</option>
+        {% for categoria in categorias %}
+          <option value="{{ categoria.id_categoria }}">{{ categoria.nome }}</option>
+        {% endfor %}
+    </select>
+    
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Adicionar Produto</button>
+    </div>
+</form>

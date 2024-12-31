@@ -1,0 +1,13 @@
+body{
+    background-color: black;
+}
+ul{
+    list-style: none;
+}
+.left-center-button {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    margin-left: 10px; /* Ajuste opcional para afastar um pouco da borda */
+}

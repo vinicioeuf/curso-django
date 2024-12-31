@@ -1,0 +1,23 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+        <th>Descrição</th>
+        <th>Categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for produto in produtos %}
+      <tr>
+        <td>{{ produto.nome }}</td>
+        <td>{{ produto.preco }}</td>
+        <td>{{ produto.quantidade }}</td>
+        <td>{{ produto.descricao }}</td>
+        <td>{{ produto.categoria.nome }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
