@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deletar Movimentação</title>
+</head>
+<body>
+    <h1>Tem certeza que deseja excluir esta movimentação?</h1>
+    <p>Produto: {{ movimentacao.produto.nome }}</p>
+    <p>Tipo: {{ movimentacao.tipo }}</p>
+    <p>Quantidade: {{ movimentacao.quantidade }}</p>
+    <p>Data: {{ movimentacao.data_movimentacao }}</p>
+    <p>Observações: {{ movimentacao.observacoes }}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Sim, excluir</button>
+    </form>
+
+    <a href="{% url 'listar_movimentacoes' %}">Voltar</a>
+</body>
+</html>

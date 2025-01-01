@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deletar Fornecedor</title>
+</head>
+<body>
+    <h1>Tem certeza que deseja excluir o fornecedor?</h1>
+    <p>Nome: {{ fornecedor.nome }}</p>
+    <p>Telefone: {{ fornecedor.telefone }}</p>
+    <p>Email: {{ fornecedor.email }}</p>
+    <p>Endereço: {{ fornecedor.endereco }}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Sim, excluir</button>
+    </form>
+
+    <a href="{% url 'listar_fornecedores' %}">Voltar</a>
+</body>
+</html>

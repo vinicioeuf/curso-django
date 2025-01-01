@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deletar Produto</title>
+</head>
+<body>
+    <h1>Tem certeza que deseja excluir o produto?</h1>
+    <p>Produto: {{ produto.nome }}</p>
+    <p>Preço: {{ produto.preco }}</p>
+    <p>Quantidade: {{ produto.quantidade }}</p>
+    <p>Categoria: {{ produto.categoria.nome }}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Sim, excluir</button>
+    </form>
+
+    <a href="{% url 'index' %}">Voltar</a>
+</body>
+</html>

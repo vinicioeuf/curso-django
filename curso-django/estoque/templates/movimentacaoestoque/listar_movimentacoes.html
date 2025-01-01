@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Movimentações</title>
+</head>
+<body>
+    <h1>Movimentações de Estoque</h1>
+    <a href="{% url 'adicionar_movimentacao' %}">Adicionar Movimentação</a><br><br>
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Tipo</th>
+                <th>Quantidade</th>
+                <th>Data</th>
+                <th>Observações</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movimentacao in movimentacoes %}
+            <tr>
+                <td>{{ movimentacao.produto.nome }}</td>
+                <td>{{ movimentacao.tipo }}</td>
+                <td>{{ movimentacao.quantidade }}</td>
+                <td>{{ movimentacao.data_movimentacao }}</td>
+                <td>{{ movimentacao.observacoes }}</td>
+                <td>
+                    <a href="{% url 'editar_movimentacao' movimentacao.id_movimentacao %}">Editar</a> | 
+                    <a href="{% url 'deletar_movimentacao' movimentacao.id_movimentacao %}">Deletar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

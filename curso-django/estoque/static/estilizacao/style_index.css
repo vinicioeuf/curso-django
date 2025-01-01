@@ -1,13 +1,46 @@
-body{
-    background-color: black;
+body {
+    background-color: #e3f2fd;
 }
-ul{
+
+ul {
     list-style: none;
+}
+.logo:hover{
+    transform: translateY(0);
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
 }
 .left-center-button {
     position: fixed;
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    margin-left: 10px; /* Ajuste opcional para afastar um pouco da borda */
+    margin-left: 10px;
+    /* Ajuste opcional para afastar um pouco da borda */
+}
+
+.table th,
+.table td {
+    white-space: nowrap;
+    /* Evita quebra de linha nas células */
+}
+
+.table th:nth-child(1),
+.table td:nth-child(1) {
+    width: 30%;
+    /* Ajuste para a coluna Nome */
+}
+
+.table th:nth-child(2),
+.table td:nth-child(2) {
+    width: 20%;
+    /* Ajuste para a coluna Preço */
+}
+
+.table th:nth-child(3),
+.table td:nth-child(3) {
+    width: 50%;
+    /* Ajuste para a coluna Categoria */
 }

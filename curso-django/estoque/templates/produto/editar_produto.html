@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Produto</title>
+</head>
+<body>
+    <h1>Editar Produto</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" value="{{ produto.nome }}" required><br><br>
+
+        <label for="preco">Preço:</label>
+        <input type="text" id="preco" name="preco" value="{{ produto.preco }}" required><br><br>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" required>{{ produto.descricao }}</textarea><br><br>
+
+        <label for="categoria_id">Categoria:</label>
+        <select id="categoria_id" name="categoria_id" required>
+            {% for categoria in categorias %}
+                <option value="{{ categoria.id_categoria }}" {% if produto.categoria.id_categoria == categoria.id_categoria %}selected{% endif %}>
+                    {{ categoria.nome }}
+                </option>
+            {% endfor %}
+        </select><br><br>
+
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'index' %}">Voltar</a>
+</body>
+</html>
