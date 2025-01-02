@@ -18,6 +18,7 @@ class Produto(models.Model):
         blank=True  
     )
     descricao = models.TextField(default="")
+    fornecedores = models.ManyToManyField('estoque.Fornecedor', related_name='produtos')
 
 
 
