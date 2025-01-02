@@ -12,11 +12,7 @@
         <td>{{ categoria.nome }}</td>
         <td>{{ categoria.descricao }}</td>
         <td>
-          <a href="{% url 'editar_categoria' categoria.id %}" class="btn btn-warning">Editar</a>
-          <form method="POST" action="{% url 'deletar_categoria' categoria.id %}" style="display:inline;">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Deletar</button>
-          </form>
+          
         </td>
       </tr>
       {% endfor %}

@@ -20,12 +20,12 @@
 <body>
     <nav class="navbar bg-body-tertiary" style="background-color: #e3f2fd;">
         <div class="container-fluid">
-            <a href="https://vinicioeufrazio.netlify.app" target="_blank"><img src="{% static 'assets/logo.png' %}" alt=""
-                    style="width: 230px;" class="logo"></a>
+            <a href="https://vinicioeufrazio.netlify.app" target="_blank"><img src="{% static 'assets/logo.png' %}"
+                    alt="" style="width: 230px;" class="logo"></a>
             <div class="d-flex ms-auto align-items-center">
                 <form class="d-flex me-3" role="search">
                     <input class="form-control me-2" type="search" placeholder="Procurar produto" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Procurar</button>
+                    <button class="btn btn-outline-primary" type="submit">Procurar</button>
                 </form>
                 <div class="btn-group dropstart">
                     <img src="{% static 'assets/profile.png' %}" alt="" style="width: 60px;" class="dropdown-toggle"
@@ -38,31 +38,59 @@
             </div>
         </div>
     </nav>
-    <button class="btn btn-dark left-center-button" type="button" data-bs-toggle="offcanvas"
-    data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right"
-        viewBox="0 0 16 16">
-        <path fill-rule="evenodd"
-            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-    </svg>
-</button>
+    <!-- Botão de abertura do Offcanvas -->
+    <button class="btn btn-dark left-center-button shadow" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-right"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+        </svg>
+    </button>
 
-<div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasExample"
-    aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Controle de Estoque</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-            aria-label="Close"></button>
+    <!-- Offcanvas -->
+    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title fw-bold" id="offcanvasExampleLabel">Controle de Estoque</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <nav class="mb-3">
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-decoration-none text-light d-flex align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-house me-2" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 3.293l6 6V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-4.707l6-6zm5 6.414V14a1 1 0 0 0 1-1v-4.293L8 1.293 2 8.707V13a1 1 0 0 0 1 1v-5.293l5-5 5 5V9.707z" />
+                                <path d="M7.293 9.5H8.5V8.293l-1.5-1.5-1.5 1.5V9.5h1.207L8 8.707l1.293 1.293z" />
+                            </svg>
+                            Início</a>
+                    </li>
+                    <li class="mb-2"><a href="{% url 'sobre' %}"
+                            class="text-decoration-none text-light d-flex align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-info-circle me-2" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 1a6 6 0 1 0 0 12A6 6 0 0 0 8 2zM4.5 8a.5.5 0 0 1 .5-.5h1V6h-1a.5.5 0 0 1 0-1h1.5A.5.5 0 0 1 7 5.5v1a.5.5 0 0 1-.5.5h-1v2h1a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5V8z" />
+                            </svg>
+                            Sobre</a>
+                    </li>
+                    <li><a href="{% url 'contato' %}" class="text-decoration-none text-light d-flex align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-envelope me-2" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm14-1H2a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zM1 5.383v6.605l4.708-2.827L1 5.383zM6.533 9.25l-5.536 3.318a1 1 0 0 0 .964.432h12a1 1 0 0 0 .964-.432L9.467 9.25l-2.7 1.625a.5.5 0 0 1-.534 0L6.533 9.25zm4.759-2.724l4.708 2.827V5.383l-4.708 1.143z" />
+                            </svg>
+                            Contato</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
-    <div class="offcanvas-body">
-        <ul class="list-unstyled">
-            <li><a href="#" class="text-decoration-none text-light">Inicio</a></li>
-            <li><a href="{% url 'sobre' %}" class="text-decoration-none text-light">Sobre</a></li>
-            <li><a href="{% url 'contato' %}" class="text-decoration-none text-light">Contato</a></li>
-        </ul>
-    </div>
-</div>
-    <div class="container my-5">
+  
+    <div class="container my-5" style="margin: 0px 200px;">
         <div class="d-flex">
             <!-- Coluna da esquerda -->
             <div class="col-md-9">
@@ -108,13 +136,117 @@
                                 </div>
                                 <h3 class="card-title">Movimentar itens do estoque</h3>
                                 <div class="mt-auto">
-                                    <a href="#" class="text-decoration-none">Ver todas→</a>
+                                    <a type="button" class="text-decoration-none" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Ver todas→
+                                    </a>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Escolha uma das
+                                                        opções abaixo</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="d-flex flex-wrap justify-content-around gap-3">
+                                                        <div class="col-12 col-sm-6 col-md-5">
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-primary dropdown-toggle w-100"
+                                                                    type="button" data-bs-toggle="dropdown"
+                                                                    aria-expanded="false">
+                                                                    Produtos
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item"
+                                                                            href="{% url 'adicionar_produto' %}">Adicionar
+                                                                            um produto</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            href="{% url 'listar_produtos' %}">Editar
+                                                                            informações de um produto</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            href="{% url 'listar_produtos' %}">Apagar um
+                                                                            produto</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-12 col-sm-6 col-md-5">
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-primary dropdown-toggle w-100"
+                                                                    type="button" data-bs-toggle="dropdown"
+                                                                    aria-expanded="false">
+                                                                    Fornecedores
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item"
+                                                                            href="{% url 'adicionar_fornecedor' %}">Adicionar
+                                                                            um fornecedor</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            href="{% url 'listar_fornecedores' %}">Editar
+                                                                            informações de um fornecedor</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            href="{% url 'listar_fornecedores' %}">Apagar
+                                                                            um fornecedor</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-12 col-sm-6 col-md-5">
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-primary dropdown-toggle w-100"
+                                                                    type="button" data-bs-toggle="dropdown"
+                                                                    aria-expanded="false">
+                                                                    Movimentações
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item"
+                                                                            href="{% url 'adicionar_movimentacao' %}">Adicionar
+                                                                            uma movimentação</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            href="{% url 'listar_movimentacoes' %}">Editar
+                                                                            informações de uma movimentação</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            href="{% url 'listar_movimentacoes' %}">Apagar
+                                                                            uma movimentação</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-12 col-sm-6 col-md-5">
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-primary dropdown-toggle w-100"
+                                                                    type="button" data-bs-toggle="dropdown"
+                                                                    aria-expanded="false">
+                                                                    Categorias
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item"
+                                                                            href="{% url 'adicionar_categoria' %}">Adicionar
+                                                                            uma categoria</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            href="{% url 'listar_categorias' %}">Editar
+                                                                            informações de uma categoria</a></li>
+                                                                    <li><a class="dropdown-item"
+                                                                            href="{% url 'listar_categorias' %}">Apagar
+                                                                            uma categoria</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-    
+
                 <!-- Tabela 1 -->
                 <table class="table table-striped mt-4" style="table-layout: fixed;">
                     <thead>
@@ -139,38 +271,41 @@
                     </tbody>
                 </table>
             </div>
-    
+
             <!-- Coluna da direita -->
-            <div class="col-md-3 ms-4">
-                <!-- Tabela 2 -->
-                <table class="table table-striped" style="table-layout: fixed; height: 100%;">
-                    <thead>
+            <div class="col-md-5 ms-4">
+                <!-- Tabela Ajustada -->
+                <table class="table table-striped table-hover align-middle" style="table-layout: fixed; word-wrap: break-word;">
+                    <thead class="table-dark">
                         <tr>
-                            <th style="width: 30%;">Nome</th>
-                            <th style="width: 20%;">Preço</th>
-                            <th style="width: 50%;">Categoria</th>
+                            <th style="width: 20%;">Nome</th>
+                            <th style="width: 25%;">Endereço</th>
+                            <th style="width: 20%;">Celular</th>
+                            <th style="width: 20%;">E-mail</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for produto in produtos %}
+                        {% for fornecedor in fornecedores %}
                         <tr>
-                            <td>{{ produto.nome }}</td>
-                            <td>{{ produto.preco }}</td>
-                            <td>{{ produto.categoria.nome }}</td>
+                            <td>{{ fornecedor.nome }}</td>
+                            <td>{{ fornecedor.endereco }}</td>
+                            <td>{{ fornecedor.telefone }}</td>
+                            <td>{{ fornecedor.email }}</td>
                         </tr>
                         {% empty %}
                         <tr>
-                            <td colspan="3" class="text-center">Nenhum produto encontrado.</td>
+                            <td colspan="4" class="text-center">Nenhum fornecedor encontrado.</td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
             </div>
+            
         </div>
     </div>
     
-    
-    
+
+
 </body>
 
 </html>

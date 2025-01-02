@@ -35,7 +35,7 @@ def adicionar_categoria(request):
 
 def listar_categorias(request):
     categorias = Categoria.objects.all()
-    return render(request, 'listar_categorias.html', {'categorias': categorias})
+    return render(request, 'categoria/listar_categorias.html', {'categorias': categorias})
 
 def editar_categoria(request, id):
     categoria = Categoria.objects.get(id=id)
@@ -44,14 +44,14 @@ def editar_categoria(request, id):
         categoria.descricao = request.POST.get('descricao')
         categoria.save()
         return redirect('listar_categorias')
-    return render(request, 'editar_categoria.html', {'categoria': categoria})
+    return render(request, 'categoria/editar_categoria.html', {'categoria': categoria})
 
 def deletar_categoria(request, id):
     categoria = Categoria.objects.get(id=id)
     if request.method == 'POST':
         categoria.delete()
         return redirect('listar_categorias')
-    return render(request, 'deletar_categoria.html', {'categoria': categoria})
+    return render(request, 'categoria/deletar_categoria.html', {'categoria': categoria})
 
 
 #CRUD PRODUTO ==================================================================================
