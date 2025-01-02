@@ -8,18 +8,20 @@ from django.contrib.auth import login as loginDjango
 from django.contrib.auth.decorators import login_required
 from .models import Produto, Categoria, Fornecedor, MovimentacaoEstoque
 
+@login_required(login_url="/login/")
 def index(request):
     produtos = Produto.objects.all() 
-    return render(request, 'index.html', {'produtos': produtos})
+    fornecedores = Fornecedor.objects.all()
+    return render(request, 'index.html', {'produtos': produtos, 'fornecedores' : fornecedores})
 
 @login_required(login_url="/login/")
 def sobre(request):
     pass
 
-
+@login_required(login_url="/login/")
 def contato(request):
     pass
-
+@login_required(login_url="/login/")
 def adicionar_produto(request):
     pass
 
@@ -224,6 +226,4 @@ def login(request):
         
 def logout_view(request):
     logout(request)
-
-
-
+    return redirect('login')

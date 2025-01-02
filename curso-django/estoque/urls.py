@@ -34,6 +34,8 @@ urlpatterns = [
     path('fornecedor/adicionar/', views.adicionar_fornecedor, name='adicionar_fornecedor'),
     path('fornecedor/editar/<int:id>/', views.editar_fornecedor, name='editar_fornecedor'),
     path('fornecedor/deletar/<int:id>/', views.deletar_fornecedor, name='deletar_fornecedor'),
+
+    path('logout/', views.logout_view, name='logout'),
     
     #URLs resetar senha
     path('reset_password/', auth_views.PasswordResetView.as_view(), name="reset_password"),

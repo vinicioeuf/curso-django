@@ -38,3 +38,4 @@ class Fornecedor(models.Model):
     telefone = models.CharField(max_length=15)
     email = models.EmailField(max_length=255)
     endereco = models.CharField(max_length=200)
+    
