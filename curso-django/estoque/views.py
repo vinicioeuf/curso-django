@@ -1,5 +1,5 @@
 
-from datetime import timezone
+from django.utils import timezone
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
@@ -12,7 +12,8 @@ from .models import Produto, Categoria, Fornecedor, MovimentacaoEstoque
 def index(request):
     produtos = Produto.objects.all() 
     fornecedores = Fornecedor.objects.all()
-    return render(request, 'index.html', {'produtos': produtos, 'fornecedores' : fornecedores})
+    return render(request, 'index.html', {'produtos': produtos, 'fornecedores': fornecedores})
+
 
 @login_required(login_url="/login/")
 def sobre(request):
@@ -59,23 +60,23 @@ def deletar_categoria(request, id):
 #CRUD PRODUTO ==================================================================================
 def adicionar_produto(request):
     categorias = Categoria.objects.all()
-    if request.method == 'POST':
-        nome = request.POST.get('nome')
-        preco = request.POST.get('preco')
-        quantidade = request.POST.get('quantidade')
-        descricao = request.POST.get('descricao')
-        id_categoria = request.POST.get('id_categoria')  
-        categoria = Categoria.objects.get(id_categoria=id_categoria)
-        
-        Produto.objects.create(
-            nome=nome,
-            preco=preco,
-            quantidade=quantidade,
-            descricao=descricao,
-            categoria=categoria
+    fornecedores = Fornecedor.objects.all()
+    if request.method == "POST":
+        nome = request.POST['nome']
+        preco = request.POST['preco']
+        quantidade = request.POST['quantidade']
+        descricao = request.POST['descricao']
+        categoria_id = request.POST['id_categoria']
+        fornecedores_ids = request.POST.getlist('fornecedores')  # Recupera múltiplos fornecedores
+
+        categoria = Categoria.objects.get(id_categoria=categoria_id)
+        produto = Produto.objects.create(
+            nome=nome, preco=preco, quantidade=quantidade, descricao=descricao, categoria=categoria
         )
+        produto.fornecedores.set(fornecedores_ids)  # Associa os fornecedores
+        produto.save()
         return redirect('index')
-    return render(request, 'produto/adicionar_produto.html', {'categorias': categorias})
+    return render(request, 'produto/adicionar_produto.html', {'categorias': categorias, 'fornecedores': fornecedores})
 
 def listar_produtos(request):
     produtos = Produto.objects.select_related('categoria').all()
@@ -146,10 +147,9 @@ def adicionar_movimentacao(request):
         produto_id = request.POST.get('produto')
         tipo = request.POST.get('tipo')
         quantidade = int(request.POST.get('quantidade'))
-        data_movimentacao = timezone.now()
+        data_movimentacao = timezone.now()  # Usando timezone.now() do Django
         observacoes = request.POST.get('observacoes')
 
-        
         if quantidade <= 0:
             return render(request, 'movimentacaoestoque/adicionar_movimentacao.html', {
                 'produtos': produtos,
@@ -165,6 +165,7 @@ def adicionar_movimentacao(request):
         )
         return redirect('listar_movimentacoes')
     return render(request, 'movimentacaoestoque/adicionar_movimentacao.html', {'produtos': produtos})
+
 
 def listar_movimentacoes(request):
     movimentacoes = MovimentacaoEstoque.objects.select_related('produto').all()

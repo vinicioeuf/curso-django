@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-  <title>Adicionar categoria</title>
+  <title>Adicionar Produto</title>
 </head>
 <body>
   <form class="row g-3" method="post">
@@ -19,8 +19,8 @@
       <input type="text" class="form-control" id="nome" name="nome">
     </div>
     <div class="col-md-6">
-        <label for="preco" class="form-label">Preço</label>
-        <input type="text" class="form-control" id="preco" name="preco">
+      <label for="preco" class="form-label">Preço</label>
+      <input type="number" step="0.01" class="form-control" id="preco" name="preco" required>      
     </div>
     <div class="col-md-6">
         <label for="quantidade" class="form-label">Quantidade</label>
@@ -38,6 +38,15 @@
           <option value="{{ categoria.id_categoria }}">{{ categoria.nome }}</option>
         {% endfor %}
     </select>
+    
+      <label for="fornecedores" class="form-label">Fornecedores</label>
+      <select name="fornecedores" id="fornecedores" class="form-select" multiple>
+        <option value="" selected disabled>Escolher categoria</option>
+        {% for fornecedor in fornecedores %}
+          <option value="{{ fornecedor.id }}">{{ fornecedor.nome }}</option>
+        {% endfor %}
+      </select>
+   
     
     </div>
     <div class="col-12">

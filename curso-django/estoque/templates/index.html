@@ -254,6 +254,7 @@
                             <th style="width: 30%;">Nome</th>
                             <th style="width: 20%;">Preço</th>
                             <th style="width: 50%;">Categoria</th>
+                            <th style="width: 50%;">Fornecedores</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -262,14 +263,20 @@
                             <td>{{ produto.nome }}</td>
                             <td>{{ produto.preco }}</td>
                             <td>{{ produto.categoria.nome }}</td>
+                            <td>
+                                {% for fornecedor in produto.fornecedores.all %}
+                                    {{ fornecedor.nome }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </td>
                         </tr>
                         {% empty %}
                         <tr>
-                            <td colspan="3" class="text-center">Nenhum produto encontrado.</td>
+                            <td colspan="4" class="text-center">Nenhum produto encontrado.</td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
+                
             </div>
 
             <!-- Coluna da direita -->
