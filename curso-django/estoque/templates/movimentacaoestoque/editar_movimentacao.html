@@ -14,29 +14,10 @@
     <h1>Editar Movimentação</h1>
     <form method="POST">
         {% csrf_token %}
-        <label for="produto">Produto:</label>
-        <select id="produto" name="produto" required>
-            {% for produto in produtos %}
-                <option value="{{ produto.id_produto }}" {% if produto.id_produto == movimentacao.produto.id_produto %}selected{% endif %}>
-                    {{ produto.nome }}
-                </option>
-            {% endfor %}
-        </select><br><br>
-
-        <label for="tipo">Tipo:</label>
-        <select id="tipo" name="tipo" required>
-            <option value="entrada" {% if movimentacao.tipo == 'entrada' %}selected{% endif %}>Entrada</option>
-            <option value="saida" {% if movimentacao.tipo == 'saida' %}selected{% endif %}>Saída</option>
-        </select><br><br>
-
-        <label for="quantidade">Quantidade:</label>
-        <input type="number" id="quantidade" name="quantidade" value="{{ movimentacao.quantidade }}" required><br><br>
-
-        <label for="observacoes">Observações:</label>
-        <textarea id="observacoes" name="observacoes">{{ movimentacao.observacoes }}</textarea><br><br>
-
-        <button type="submit">Salvar</button>
+        {{ form.as_p }}  
+        <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
+    
     <a href="{% url 'listar_movimentacoes' %}">Voltar</a>
 </body>
 </html>

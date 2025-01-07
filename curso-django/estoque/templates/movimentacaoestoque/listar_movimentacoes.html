@@ -13,7 +13,7 @@
 <body>
     <h1>Movimentações de Estoque</h1>
     <a href="{% url 'adicionar_movimentacao' %}">Adicionar Movimentação</a><br><br>
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Produto</th>
@@ -33,12 +33,13 @@
                 <td>{{ movimentacao.data_movimentacao }}</td>
                 <td>{{ movimentacao.observacoes }}</td>
                 <td>
-                    <a href="{% url 'editar_movimentacao' movimentacao.id_movimentacao %}">Editar</a> | 
-                    <a href="{% url 'deletar_movimentacao' movimentacao.id_movimentacao %}">Deletar</a>
+                    <a href="{% url 'editar_movimentacao' movimentacao.id_movimentacao %}" class="btn btn-warning">Editar</a> 
+                    <a href="{% url 'deletar_movimentacao' movimentacao.id_movimentacao %}" class="btn btn-danger">Deletar</a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    
 </body>
 </html>

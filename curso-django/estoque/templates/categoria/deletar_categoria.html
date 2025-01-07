@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,15 +8,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-  <title>Adicionar categoria</title>
+  <title>Deletar Categoria</title>
 </head>
 <body>
-  <p>Tem certeza de que deseja deletar a categoria "{{ categoria.nome }}"?</p>
-<form method="POST">
-  {% csrf_token %}
-  <button type="submit" class="btn btn-danger">Deletar</button>
-  <a href="{% url 'listar_categorias' %}" class="btn btn-secondary">Cancelar</a>
-</form>
-
+  <h1>Tem certeza de que deseja deletar a categoria "{{ categoria.nome }}"?</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Deletar</button>
+    <a href="{% url 'listar_categorias' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
 </body>
 </html>

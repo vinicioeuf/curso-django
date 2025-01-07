@@ -1,6 +1,4 @@
-
-  
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -10,9 +8,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-  <title>Adicionar categoria</title>
+  <title>Listar Categorias</title>
 </head>
 <body>
+  <h1>Categorias</h1>
+  <a href="{% url 'adicionar_categoria' %}" class="btn btn-primary">Adicionar Categoria</a><br><br>
+  
   <table class="table">
     <thead>
       <tr>
@@ -27,7 +28,9 @@
         <td>{{ categoria.nome }}</td>
         <td>{{ categoria.descricao }}</td>
         <td>
-          
+          <a href="{% url 'editar_categoria' categoria.id_categoria %}" class="btn btn-warning">Editar</a> |
+<a href="{% url 'deletar_categoria' categoria.id_categoria %}" class="btn btn-danger">Deletar</a>
+
         </td>
       </tr>
       {% endfor %}

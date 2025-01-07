@@ -31,8 +31,8 @@
                 <td>{{ fornecedor.email }}</td>
                 <td>{{ fornecedor.endereco }}</td>
                 <td>
-                    <a href="{% url 'editar_fornecedor' fornecedor.id %}">Editar</a> | 
-                    <a href="{% url 'deletar_fornecedor' fornecedor.id %}">Deletar</a>
+                    <a href="{% url 'editar_fornecedor' fornecedor.id %}"  class="btn btn-warning">Editar</a> | 
+                    <a href="{% url 'deletar_fornecedor' fornecedor.id %}"  class="btn btn-danger">Deletar</a>
                 </td>
             </tr>
             {% endfor %}
