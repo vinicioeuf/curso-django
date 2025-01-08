@@ -45,4 +45,45 @@ class Fornecedor(models.Model):
     def __str__(self):
         return self.nome
     
-    
+  
+#DIGITE python manage.py shell
+#DESCOMENTE O CÓDIGO ABAIXO, COPIE E COLE O CÓDIGO NO PROMPT E ESTARÁ FUNCIONANDO
+
+# from estoque.models import Categoria, Produto, Fornecedor, MovimentacaoEstoque
+# from django.utils import timezone
+
+
+# categoria = Categoria.objects.create(nome="Eletrônicos", descricao="Produtos eletrônicos")
+
+
+# fornecedor = Fornecedor.objects.create(
+#     nome="Tech Supplies Ltda",
+#     telefone="(87) 99999-9999",
+#     email="contato@techsupplies.com",
+#     endereco="Rua Principal, 123"
+# )
+
+
+# produto = Produto.objects.create(
+#     nome="Notebook",
+#     quantidade=10,
+#     preco=2500.00,
+#     categoria=categoria,
+#     descricao="Notebook de alta performance"
+# )
+# produto.fornecedores.add(fornecedor)
+
+
+# movimentacao = MovimentacaoEstoque.objects.create(
+#     produto=produto,
+#     tipo='entrada',
+#     quantidade=5,
+#     data_movimentacao=timezone.now(),
+#     observacoes="Entrada de estoque inicial"
+# )
+
+# print("Dados inseridos com sucesso!")
+# print(f"Categoria criada: {categoria}")
+# print(f"Fornecedor criado: {fornecedor}")
+# print(f"Produto criado: {produto}")
+# print(f"Movimentação criada: {movimentacao}")
