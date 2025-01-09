@@ -52,10 +52,10 @@ class Fornecedor(models.Model):
 # from estoque.models import Categoria, Produto, Fornecedor, MovimentacaoEstoque
 # from django.utils import timezone
 
-
+# # Criar uma categoria
 # categoria = Categoria.objects.create(nome="Eletrônicos", descricao="Produtos eletrônicos")
 
-
+# # Criar um fornecedor
 # fornecedor = Fornecedor.objects.create(
 #     nome="Tech Supplies Ltda",
 #     telefone="(87) 99999-9999",
@@ -63,7 +63,7 @@ class Fornecedor(models.Model):
 #     endereco="Rua Principal, 123"
 # )
 
-
+# # Criar um produto
 # produto = Produto.objects.create(
 #     nome="Notebook",
 #     quantidade=10,
@@ -73,7 +73,7 @@ class Fornecedor(models.Model):
 # )
 # produto.fornecedores.add(fornecedor)
 
-
+# # Criar uma movimentação de estoque
 # movimentacao = MovimentacaoEstoque.objects.create(
 #     produto=produto,
 #     tipo='entrada',
@@ -82,8 +82,36 @@ class Fornecedor(models.Model):
 #     observacoes="Entrada de estoque inicial"
 # )
 
-# print("Dados inseridos com sucesso!")
-# print(f"Categoria criada: {categoria}")
-# print(f"Fornecedor criado: {fornecedor}")
-# print(f"Produto criado: {produto}")
-# print(f"Movimentação criada: {movimentacao}")
+# # Editar uma categoria
+# categoria.nome = "Eletrônicos Atualizados"
+# categoria.descricao = "Produtos eletrônicos atualizados"
+# categoria.save()
+
+# # Editar um fornecedor
+# fornecedor.nome = "Tech Supplies Atualizado"
+# fornecedor.telefone = "(87) 98888-8888"
+# fornecedor.save()
+
+# # Editar um produto
+# produto.nome = "Notebook Gamer"
+# produto.quantidade = 15
+# produto.save()
+
+# # Editar uma movimentação
+# movimentacao.quantidade = 10
+# movimentacao.observacoes = "Alteração na quantidade da movimentação"
+# movimentacao.save()
+
+# # Excluir uma movimentação
+# movimentacao.delete()
+
+# # Excluir um produto
+# produto.delete()
+
+# # Excluir um fornecedor
+# fornecedor.delete()
+
+# # Excluir uma categoria
+# categoria.delete()
+
+# print("Edição e exclusão realizadas com sucesso!")
