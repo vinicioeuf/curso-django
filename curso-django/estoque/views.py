@@ -159,7 +159,7 @@ def adicionar_movimentacao(request):
     else:
         form = MovimentacaoEstoqueForm()
     
-    return render(request, 'movimentacoes/adicionar_movimentacao.html', {'form': form})
+    return render(request, 'movimentacaoestoque/adicionar_movimentacao.html', {'form': form})
 
 
 def listar_movimentacoes(request):
