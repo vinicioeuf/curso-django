@@ -8,6 +8,8 @@ from django.contrib.auth import login as loginDjango
 from django.contrib.auth.decorators import login_required
 from .models import Produto, Categoria, Fornecedor, MovimentacaoEstoque
 from .forms import ProdutoForm, CategoriaForm, FornecedorForm, MovimentacaoEstoqueForm
+
+#Caso dê algum problema no arquivo zipado, aqui está o link do repositório no github: https://github.com/vinicioeuf/curso-django
 @login_required(login_url="/login/")
 def index(request):
     produtos = Produto.objects.all() 
