@@ -22,11 +22,11 @@ urlpatterns = [
     path('produto/deletar/<int:id_produto>/', views.deletar_produto, name='deletar_produto'),
     
     # URLs para Movimentação de Estoque
-    path('movimentacoes/', views.listar_movimentacoes, name='listar_movimentacoes'),
-     path('movimentacoes/listar_movimentacoes', views.listar_movimentacoes, name='listar_movimentacoes'),
-    path('movimentacoes/adicionar/', views.adicionar_movimentacao, name='adicionar_movimentacao'),
-    path('movimentacoes/editar/<int:id>/', views.editar_movimentacao, name='editar_movimentacao'),
-    path('movimentacoes/deletar/<int:id>/', views.deletar_movimentacao, name='deletar_movimentacao'),
+    path('movimentacaoestoque/', views.listar_movimentacoes, name='listar_movimentacoes'),
+     path('movimentacaoestoque/listar_movimentacoes', views.listar_movimentacoes, name='listar_movimentacoes'),
+    path('movimentacaoestoque/adicionar/', views.adicionar_movimentacao, name='adicionar_movimentacao'),
+    path('movimentacaoestoque/editar/<int:id>/', views.editar_movimentacao, name='editar_movimentacao'),
+    path('movimentacaoestoque/deletar/<int:id>/', views.deletar_movimentacao, name='deletar_movimentacao'),
 
     # URLs para Fornecedor
     path('fornecedor/', views.listar_fornecedores, name='listar_fornecedores'),
