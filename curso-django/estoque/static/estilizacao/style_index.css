@@ -21,26 +21,11 @@ ul {
     /* Ajuste opcional para afastar um pouco da borda */
 }
 
-.table th,
-.table td {
-    white-space: nowrap;
-    /* Evita quebra de linha nas células */
+
+
+.containers-tabelas{
+    display: flex;
+    flex-direction: column;
+    
 }
 
-.table th:nth-child(1),
-.table td:nth-child(1) {
-    width: 30%;
-    /* Ajuste para a coluna Nome */
-}
-
-.table th:nth-child(2),
-.table td:nth-child(2) {
-    width: 20%;
-    /* Ajuste para a coluna Preço */
-}
-
-.table th:nth-child(3),
-.table td:nth-child(3) {
-    width: 50%;
-    /* Ajuste para a coluna Categoria */
-}
