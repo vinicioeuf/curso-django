@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <title>Perfil</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="container mt-5">
+        <h1 class="text-center">Meu Perfil</h1>
+        <div class="card mx-auto mt-4" style="max-width: 500px;">
+            <div class="card-body">
+                <h5 class="card-title">Informações do Usuário</h5>
+                <p><strong>Nome:</strong> {{ user.get_full_name|default:user.username }}</p>
+                <p><strong>E-mail:</strong> {{ user.email }}</p>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+
+</html>

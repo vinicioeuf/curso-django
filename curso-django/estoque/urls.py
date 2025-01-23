@@ -15,7 +15,7 @@ urlpatterns = [
     path('categoria/deletar/<int:id_categoria>/', views.deletar_categoria, name='deletar_categoria'),
     path('categoria/', views.listar_categorias, name='listar_categorias'),
     path('categoria/listar_categorias', views.listar_categorias, name='listar_categorias'),
-    path('produto/', views.listar_produtos, name='listar_produtos'),
+   path('produto/', views.listar_produtos, name='listar_produtos'),
     path('produto/listar_produto', views.listar_produtos, name='listar_produtos'),
     path('produto/adicionar/', views.adicionar_produto, name='adicionar_produto'),
     path('produto/editar/<int:id_produto>/', views.editar_produto, name='editar_produto'),
@@ -34,7 +34,9 @@ urlpatterns = [
     path('fornecedor/adicionar/', views.adicionar_fornecedor, name='adicionar_fornecedor'),
     path('fornecedor/editar/<int:id>/', views.editar_fornecedor, name='editar_fornecedor'),
     path('fornecedor/deletar/<int:id>/', views.deletar_fornecedor, name='deletar_fornecedor'),
-
+    
+    path('perfil/perfil', views.perfil, name='perfil'),
+    path('base', views.base, name='base'),
     path('logout/', views.logout_view, name='logout'),
     
     #URLs resetar senha

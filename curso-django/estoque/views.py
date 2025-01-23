@@ -16,6 +16,13 @@ def index(request):
     fornecedores = Fornecedor.objects.all()
     return render(request, 'index.html', {'produtos': produtos, 'fornecedores': fornecedores})
 
+@login_required
+def perfil(request):
+    return render(request, 'perfil/perfil.html', {'user': request.user})
+
+@login_required
+def base(request):
+    return render(request, "base.html")
 
 @login_required(login_url="/login/")
 def sobre(request):
@@ -84,9 +91,13 @@ def adicionar_produto(request):
     return render(request, 'produto/adicionar_produto.html', {'form': form})
 
 def listar_produtos(request):
-    produtos = Produto.objects.select_related('categoria').prefetch_related('fornecedores').all()
-    return render(request, 'produto/listar_produtos.html', {'produtos': produtos})
+    query = request.GET.get('q')
+    if query:
+        produtos = Produto.objects.filter(nome__icontains=query)
+    else:
+        produtos = Produto.objects.all()
 
+    return render(request, 'produto/listar_produtos.html', {'produtos': produtos})
 def editar_produto(request, id_produto):
     produto = get_object_or_404(Produto, id_produto=id_produto)
     
