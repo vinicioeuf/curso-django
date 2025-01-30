@@ -203,6 +203,7 @@ def deletar_movimentacao(request, id):
         return redirect('listar_movimentacoes')
     
     return render(request, 'movimentacaoestoque/deletar_movimentacao.html', {'movimentacao': movimentacao})
+
 def cadastro(request):
     if request.method == 'GET':
         return render(request, 'autenticacao/cadastro.html')
