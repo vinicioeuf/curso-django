@@ -1,5 +1,8 @@
-from django.test import TestCase
-from estoque.models import Categoria, Produto, Fornecedor
+from django.forms import ValidationError
+from django.test import Client, TestCase
+from django.urls import reverse
+from estoque.models import Categoria, MovimentacaoEstoque, Produto, Fornecedor
+from estoque.forms import ProdutoForm
 
 class CategoriaTestCase(TestCase):
     def test_categoria_crud(self):
@@ -85,3 +88,84 @@ class ProdutoTestCase(TestCase):
         # DELETE
         produto_lido.delete()
         self.assertEqual(Produto.objects.count(), 0)
+
+
+class ViewsTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.categoria = Categoria.objects.create(nome="Eletrônicos", descricao="Produtos eletrônicos")
+        self.fornecedor = Fornecedor.objects.create(
+            nome="Fornecedor A",
+            telefone="(87) 99999-9999",
+            email="fornecedorA@example.com",
+            endereco="Rua dos Testes, 456"
+        )
+        self.produto = Produto.objects.create(
+            nome="Celular Galaxy",
+            quantidade=10,
+            preco=1999.99,
+            categoria=self.categoria,
+            descricao="Smartphone Samsung Galaxy"
+        )
+        self.produto.fornecedores.add(self.fornecedor)
+
+    def test_categoria_list_view(self):
+        response = self.client.get(reverse('listar_categorias'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Eletrônicos")
+
+    def test_produto_list_view(self):
+        response = self.client.get(reverse('listar_produtos'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Celular Galaxy")
+
+    def test_fornecedor_list_view(self):
+        response = self.client.get(reverse('listar_fornecedores'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Fornecedor A")
+
+
+class ModelTestCase(TestCase):
+    def setUp(self):
+        self.categoria = Categoria.objects.create(nome="Eletrônicos", descricao="Produtos eletrônicos")
+        self.produto = Produto.objects.create(
+            nome="Notebook Dell",
+            quantidade=5,
+            preco=3500.00,
+            categoria=self.categoria,
+            descricao="Notebook de alto desempenho"
+        )
+
+    def test_movimentacao_estoque_quantidade_invalida(self):
+        """Testa se a validação impede movimentações com quantidade zero ou negativa"""
+        movimentacao = MovimentacaoEstoque(
+            produto=self.produto,
+            tipo="entrada",
+            quantidade=0
+        )
+        with self.assertRaises(ValidationError):
+            movimentacao.full_clean()  # Deve lançar um erro de validação
+
+class ProdutoFormTest(TestCase):
+    def test_produto_form_valido(self):
+        # Criar instâncias de Categoria e Fornecedor antes de testar o formulário
+        categoria = Categoria.objects.create(nome="Eletrônicos", descricao="Produtos eletrônicos")
+        fornecedor = Fornecedor.objects.create(
+            nome="Fornecedor A",
+            telefone="(87) 99999-9999",
+            email="fornecedorA@example.com",
+            endereco="Rua dos Testes, 456"
+        )
+
+        # Dados do formulário com fornecedor incluso
+        form_data = {
+            'nome': 'Celular Galaxy',
+            'quantidade': 10,
+            'preco': '1999.99',  
+            'descricao': 'Smartphone Samsung Galaxy',
+            'categoria': categoria.id_categoria,
+            'fornecedores': [fornecedor.id]  # Lista de IDs para ManyToManyField
+        }
+        
+        form = ProdutoForm(data=form_data)
+        self.assertTrue(form.is_valid())  # Deve passar agora
